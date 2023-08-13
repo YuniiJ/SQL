@@ -1,0 +1,10 @@
+--create a fashion boutique database
+CREATE TABLE boutique (id INTEGER PRIMARY KEY, NAME TEXT, quantity INTEGER);
+INSERT INTO boutique VALUES (1,"dresses",3);
+INSERT INTO boutique VALUES (2, "shirts",5);
+INSERT INTO boutique VALUES (3, "jeans", 8);
+INSERT INTO boutique VALUES (4, "skirts", 10);
+INSERT INTO boutique VALUES (5, "leggings", 6);
+
+--display data ordered by quantity
+SELECT SUM(quantity) FROM boutique GROUP BY quantity
