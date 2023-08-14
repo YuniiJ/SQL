@@ -1,0 +1,54 @@
+
+CREATE TABLE winstons_donut_logs (
+    id TEXT PRIMARY KEY,
+    status TEXT,
+    years_old INTEGER,
+    donuts_eaten INTEGER,
+    reason TEXT
+    );
+    INSERT INTO winstons_donut_logs VALUES (0, "new born winston lvl 0", 0, 0, "");
+INSERT INTO winstons_donut_logs VALUES (1, "baby winston lvl1", 1, 10, "(Gummed)");
+INSERT INTO winstons_donut_logs VALUES (2, "baby winston lvl2", 2, 40, "(Gummed)");
+INSERT INTO winstons_donut_logs VALUES (3, "baby winston lvl3", 3, 50, "(Gummed)");
+INSERT INTO winstons_donut_logs VALUES (4, "toddler winston lvl1", 4, 300, "");
+INSERT INTO winstons_donut_logs VALUES (5, "toddler winston lvl2", 5, 400, "");
+INSERT INTO winstons_donut_logs VALUES (6, "kid winston lvl1", 6, 1200, "");
+INSERT INTO winstons_donut_logs VALUES (7, "kid winston lvl2", 7, 1000, "");
+INSERT INTO winstons_donut_logs VALUES (8, "kid winston lvl3", 8, 1000, "");
+INSERT INTO winstons_donut_logs VALUES (9, "kid winston lvl4", 9, 1000, "");
+
+
+
+
+
+SELECT *FROM winstons_donut_logs WHERE donuts_eaten >4 ORDER BY years_old;
+
+/*AND*/
+SELECT *FROM winstons_donut_logs WHERE donuts_eaten >4 AND donuts_eaten<7;
+
+/*OR*/
+SELECT *FROM winstons_donut_logs WHERE donuts_eaten >4 OR years_old <3;
+
+SELECT SUM(donuts_eaten) AS avg_eaten FROM winstons_donut_logs
+GROUP BY donuts_eaten
+HAVING avg_eaten >25
+
+/*COUNT*/
+SELECT COUNT(*),
+CASE
+WHEN years_old > 3-1 THEN "ABOVE MAX";
+WHEN years_old > ROUND(0.01 * (3-1)) THEN "ABOVE TARGET";
+WHEN years_old > ROUND(0.50 *(3-1))THEN "WITHIN TARGET";
+ELSE "BELOW TARGET";
+END AS "donuts_eaten";
+FROM winstons_donut_logs;
+GROUP BY donuts_eaten;
+
+
+
+
+
+
+
+
+
