@@ -7,4 +7,4 @@ INSERT INTO boutique VALUES (4, "skirts", 10);
 INSERT INTO boutique VALUES (5, "leggings", 6);
 
 --display data ordered by quantity
-SELECT SUM(quantity) FROM boutique GROUP BY quantity
+SELECT SUM(quantity) FROM boutique GROUP BY quantity;
