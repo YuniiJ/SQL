@@ -1,0 +1,38 @@
+
+
+CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT,stage_name TEXT,total_song_written INTEGER,years_active INTEGER, total_tours INTEGER);
+
+INSERT INTO singers VALUES(1,"beyonce",182,2003,7);
+INSERT INTO singers VALUES(2,"taylor swift",200,2004,6);
+INSERT INTO singers VALUES(3,"ariana grande",54,2011,4);
+INSERT INTO singers VALUES(4,"rihanna",76,2003,12);
+INSERT INTO singers VALUES(5,"doja cat",39,2014,1);
+
+CREATE TABLE singer_activities (id INTEGER PRIMARY KEY AUTOINCREMENT,first_name TEXT,favorite_activity TEXT,birth_state TEXT, children_quantity INTEGER);
+
+INSERT INTO singer_activities VALUES(1,"beyonce","dancing","texas",3);
+INSERT INTO singer_activities VALUES(2,"taylor","pilates","virginia",0);
+INSERT INTO singer_activities VALUES(3,"ariana","drawing","new york",0);
+INSERT INTO singer_activities VALUES(4,"robyn","dancing","barbadoes",2);
+INSERT INTO singer_activities VALUES(5,"amala","singing","california",0);
+
+
+CREATE TABLE singer_facts (id INTEGER PRIMARY KEY AUTOINCREMENT,full_name TEXT,favorite_color TEXT,married TEXT);
+SELECT * FROM singer_activities;
+
+INSERT INTO singer_facts VALUES(1,"beyonce giselle","blue","yes");
+INSERT INTO singer_facts VALUES(2,"taylor swift","purple","null");
+INSERT INTO singer_facts VALUES(3,"ariana grande","pink","null");
+INSERT INTO singer_facts VALUES(4,"robyn fenty","red","yes");
+INSERT INTO singer_facts  VALUES(5,"amala dlamini","red","null");
+SELECT * FROM singer_facts;
+
+
+SELECT singers.stage_name,singers.total_song_written,singers.years_active,singer_activities.birth_state,singer_facts.married,singer_facts.favorite_color
+FROM singers 
+LEFT OUTER JOIN singer_activities
+ON singers.id=singer_activities.id
+LEFT OUTER JOIN singer_facts
+ON singers.id=singer_facts.id
+ORDER BY years_active desc;
+
